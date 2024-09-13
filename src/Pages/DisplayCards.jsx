@@ -4,17 +4,9 @@ import Card from "../components/Card";
 function DisplayCards() {
   return (
     <div className="flex gap-2 justify-center items-center bg-orange-600 h-[100vh] flex-wrap">
-      <Card
-        title="React Js"
-        img="https://media.licdn.com/dms/image/C4E12AQEBVCR2SpRr9g/article-cover_image-shrink_720_1280/0/1625909824541?e=2147483647&v=beta&t=Y_zSoI8cPUR3wQvPyYK15PLWpQJJ0si6OvsuXFnIC18"
-        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, modi fuga? Dicta, distinctio nam quae laboriosam cumque repudiandae non officiis, cupiditate officia ratione totam maiores nemo ea dolorum aliquam reprehenderit."
-      />
+      <Card />
 
-      <Card
-        title="JavaScript"
-        img="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png"
-        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, modi fuga? Dicta, distinctio nam quae laboriosam cumque repudiandae non officiis, cupiditate officia ratione totam maiores nemo ea dolorum aliquam reprehenderit."
-      />
+      <Card />
 
       <Card
         title="CSS"
