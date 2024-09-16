@@ -1,42 +1,43 @@
 import React, { useState } from "react";
 
 function ToggleTheme() {
+  // useState
+  // let[state, setState] = useState(initialValue)
+
+  const [count, setCount] = useState(0);
   const [theme, setTheme] = useState(false);
 
-  const themeHandler = () => {
+  const incrementHandler = () => {
+    setCount(count + 1);
+  };
+
+  const toggleTheme = () => {
     setTheme(!theme);
   };
   return (
-    <div className="flex justify-center items-center flex-col">
+    <>
       <div>
+        <h1>This is a theme page</h1>
+        <h1>{count}</h1>
         <button
-          onClick={themeHandler}
-          className={` px-2 py-1 rounded-md mb-4 mt-3 ${
-            theme
-              ? "bg-black text-white"
-              : "bg-white text-black border border-gray-900"
-          }`}
+          className="bg-blue-400 text-white px-2 py-1 rounded"
+          onClick={incrementHandler}
         >
-          {theme ? "White mode" : "Dark mode"}
+          Increment
         </button>
       </div>
 
-      <div
-        className={`h-[400px] w-[400px] border border-gray-800 ${
-          theme
-            ? "bg-black text-white"
-            : "bg-white text-black border border-gray-900"
-        }`}
-      >
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-          consequatur laboriosam harum iure nihil repellendus inventore eius
-          voluptates vero. Aliquam corporis qui fugit dignissimos aperiam unde
-          impedit officia et officiis.
-        </p>
+      <div className="flex justify-center">
+        <button onClick={toggleTheme} className={`px-2 py-1 rounded ${theme ? "bg-white text-black": "bg-black text-white"}`}>
+          {theme ? "White mode" : "Dark mode"}
+        </button>
       </div>
-    </div>
+    </>
   );
 }
 
 export default ToggleTheme;
+// hooks
+// useState
+// useEffect
+// useReducer
