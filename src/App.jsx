@@ -1,11 +1,13 @@
-import Todo from "./components/Todo";
+import React from "react";
+import Forms from "./Pages/Forms";
+import Todo from "./Pages/Todo";
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <Todo />
-    </div>
+    <>
+      <Forms />
+    </>
   );
-}
+};
 
 export default App;

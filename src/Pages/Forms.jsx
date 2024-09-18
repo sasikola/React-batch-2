@@ -1,35 +1,77 @@
 import React, { useState } from "react";
 
 function Forms() {
-  const [username, setUserName] = useState("");
-  const [password, setPassword] = useState("");
- 
+  const [input, setInput] = useState("");
+  const [todos, setTodos] = useState([]);
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    console.log(username)
-    console.log(password)
-   
+  const clickHandler = () => {
+    setTodos([input, ...todos]);
   };
+
+  const changeHandler = (e) => {
+    setInput(e.target.value);
+  };
+
+  const deleteHandler = (id) => {
+    const updatedTodos = todos.filter((_, i) => id !== i);
+    setTodos(updatedTodos);
+  };
+
   return (
     <>
       <div>
-        <form onSubmit={submitHandler}>
-          <input
-            onChange={(e)=> setUserName(e.target.value)}
-            type="text"
-            placeholder="username"
-          />
-          <input
-            onChange={(e)=>setPassword(e.target.value)}
-            type="password"
-            placeholder="passwrod"
-          />
-          <input type="submit" value="Login" />
-        </form>
+        <h1 className="text-center">Todo App</h1>
+      </div>
+      <div className="flex justify-center">
+        <input
+          onChange={changeHandler}
+          className="border border-gray-600"
+          type="text"
+          placeholder="Add Todo..."
+        />
+        <button
+          onClick={clickHandler}
+          className="bg-blue-800 text-white px-2 ml-2"
+        >
+          Add Todo!
+        </button>
+      </div>
+
+      <div className="flex justify-center">
+        <ul>
+          {todos.map((value, index, array) => {
+            return (
+              <>
+                <li key={index}>
+                  {index}. {value}
+                  <button
+                    onClick={() => deleteHandler(index)}
+                    className="bg-red-600 px-2 ml-3 mb-1"
+                  >
+                    Delete
+                  </button>
+                </li>
+              </>
+            );
+          })}
+        </ul>
       </div>
     </>
   );
 }
 
 export default Forms;
+
+// input filed
+// store into an array
+// using id delete and edit operations
+// arrays and objects
+//person =  {name: "", add:""}  //person.name
+// for in/ for of
+// arrays [1,2,5]  -> for loop, for each, map
+
+// [1,3,]
+// []
+// user123
+// pass@123
+// example@gmail.com
