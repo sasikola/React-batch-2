@@ -1,24 +1,32 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 
 const ResetPassword = () => {
-  const [email, setEmail] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [message, setMessage] = useState('');
+  const [email, setEmail] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
     if (newPassword !== confirmPassword) {
-      setMessage('Passwords do not match!');
+      setMessage("Passwords do not match!");
       return;
     }
     try {
-      const response = await axios.post('http://localhost:5000/auth/reset-password', {
-        email,
-        newPassword,
-        confirmNewPassword: confirmPassword,
-      });
+      const response = await axios.post(
+        "http://localhost:5000/auth/reset-password",
+        {
+          email,
+          newPassword,
+          confirmNewPassword: confirmPassword,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setMessage(response.data.message);
     } catch (error) {
       setMessage(error.response.data.error);
@@ -50,7 +58,9 @@ const ResetPassword = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-bold mb-2">Confirm Password</label>
+          <label className="block text-sm font-bold mb-2">
+            Confirm Password
+          </label>
           <input
             type="password"
             value={confirmPassword}

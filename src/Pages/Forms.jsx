@@ -3,6 +3,8 @@ import React, { useState } from "react";
 function Forms() {
   const [input, setInput] = useState("");
   const [todos, setTodos] = useState([]);
+  const [editTask, setEditTask] = useState(null);
+  const [editTodo, setEditTodo] = useState("");
 
   const clickHandler = () => {
     setTodos([input, ...todos]);
@@ -15,6 +17,19 @@ function Forms() {
   const deleteHandler = (id) => {
     const updatedTodos = todos.filter((_, i) => id !== i);
     setTodos(updatedTodos);
+  };
+
+  const editHandler = (id) => {
+    setEditTask(id);
+    setEditTodo(todos[id]);
+  };
+
+  const updateHandler = () => {
+    const updatedTodos = todos.map((value, index) =>
+      index === editTask ? editTodo : value
+    );
+    setTodos(updatedTodos);
+    setEditTask(null);
   };
 
   return (
@@ -43,13 +58,39 @@ function Forms() {
             return (
               <>
                 <li key={index}>
-                  {index}. {value}
-                  <button
-                    onClick={() => deleteHandler(index)}
-                    className="bg-red-600 px-2 ml-3 mb-1"
-                  >
-                    Delete
-                  </button>
+                  {editTask === index ? (
+                    <div>
+                      <input
+                        className="border border-gray-600"
+                        type="text"
+                        placeholder="Update todo.."
+                        value={editTodo}
+                        onChange={(e) => setEditTodo(e.target.value)}
+                      />
+                      <button
+                        onClick={updateHandler}
+                        className="bg-green-600 px-2 ml-3 mb-1"
+                      >
+                        Update
+                      </button>
+                    </div>
+                  ) : (
+                    <div>
+                      {index}. {value}
+                      <button
+                        onClick={() => deleteHandler(index)}
+                        className="bg-red-600 px-2 ml-3 mb-1"
+                      >
+                        Delete
+                      </button>
+                      <button
+                        onClick={() => editHandler(index)}
+                        className="bg-green-600 px-2 ml-3 mb-1"
+                      >
+                        Edit
+                      </button>
+                    </div>
+                  )}
                 </li>
               </>
             );
@@ -75,3 +116,7 @@ export default Forms;
 // user123
 // pass@123
 // example@gmail.com
+
+
+
+// todos = [1,2,3]

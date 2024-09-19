@@ -1,17 +1,33 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 
 const RequestOtp = () => {
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleRequestOtp = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/auth/forgot-password', { email });
+      const response = await axios.post(
+        "http://localhost:5000/auth/forgot-password",
+        { email },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          
+        }
+      );
       setMessage(response.data.message);
     } catch (error) {
-      setMessage(error.response.data.error);
+      if (error.response) {
+        console.error("Error Response:", error.response);
+        setMessage(error.response.data.error);
+      } else if (error.request) {
+        console.error("No response received:", error.request);
+      } else {
+        console.error("Error in request setup:", error.message);
+      }
     }
   };
 
