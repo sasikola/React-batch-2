@@ -120,3 +120,7 @@ export default Forms;
 
 
 // todos = [1,2,3]
+// map, filter
+// events
+// conditional rendering
+// lists in react
