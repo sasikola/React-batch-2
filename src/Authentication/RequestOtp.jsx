@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const RequestOtp = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleRequestOtp = async (e) => {
     e.preventDefault();
     try {
+      // Send OTP request to the server
       const response = await axios.post(
         "http://localhost:5000/auth/forgot-password",
         { email },
@@ -15,10 +18,12 @@ const RequestOtp = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          
         }
       );
+      
+      // If OTP is sent successfully, navigate to the verify-otp page
       setMessage(response.data.message);
+      navigate("/verify-otp", { state: { email } }); // Pass the email to the VerifyOtp component
     } catch (error) {
       if (error.response) {
         console.error("Error Response:", error.response);
