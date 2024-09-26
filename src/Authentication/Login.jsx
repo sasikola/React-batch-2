@@ -6,11 +6,14 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
+
   const handleLogin = (e) => {
     e.preventDefault();
     // Handle login logic here
     console.log('Login with:', { username, password });
   };
+
+
 
   const handleForgotPassword = () => {
     navigate('/request-otp'); // Navigate to /request-otp route
@@ -48,13 +51,13 @@ const Login = () => {
         </button>
       </form>
       <div className="mt-4 text-center">
-        <button
+        <p
           type="button"
           className="text-blue-500 underline"
           onClick={handleForgotPassword}
         >
           Forgot Password?
-        </button>
+        </p>
       </div>
     </div>
   );
