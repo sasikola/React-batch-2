@@ -1,39 +1,53 @@
-.pagination-container {
+/* ag-Grid pagination container */
+.ag-paging-panel {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   margin-top: 20px;
 }
 
-.pagination {
+/* Pagination list styling */
+.ag-paging-panel > span, .ag-paging-page-summary-panel {
   display: flex;
   list-style: none;
   padding: 0;
+  margin: 0 5px;
 }
 
-.pagination-number, .pagination-text, .pagination-arrow {
+/* General pagination item styling */
+.ag-paging-button, .ag-paging-number-select {
   padding: 1px 7px 4px 8px;
   font-size: 12px;
   margin: 0 2px;
   color: #777;
   cursor: pointer;
   user-select: none;
+  border-radius: 4px;
 }
 
-.pagination-number:hover, .pagination-text:hover, .pagination-arrow:hover {
+/* Hover effect for pagination buttons */
+.ag-paging-button:hover {
   color: #0056b3;
 }
 
-.pagination-number.active {
+/* Styling for active (current) page */
+.ag-paging-number-select.ag-active-page {
   color: #0056b3;
 }
 
-.pagination-text.disabled, .pagination-arrow.disabled {
+/* Disabled pagination buttons */
+.ag-paging-button[disabled], .ag-paging-button.ag-disabled {
   background-color: #ccc;
   cursor: not-allowed;
+  color: #777;
+}
+
+/* Hide disabled elements (if required) */
+.ag-paging-button.ag-disabled {
   display: none;
 }
 
+/* Input form styling */
 .pagination-input-form {
   margin-top: 10px;
   display: flex;
@@ -56,13 +70,12 @@
   cursor: pointer;
 }
 
-
-
-img{
+/* Image inside pagination (optional) */
+img {
   width: 16px;
   height: 16px;
   border-width: 1px;
   border-color: #dddddd;
   padding: 2px;
-  border-radius: 4px;
+  border-radius: 4px;
 }
