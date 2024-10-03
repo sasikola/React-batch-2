@@ -42,3 +42,91 @@
     color: #555;
   }
   
+
+
+  /* Customize pagination container */
+.ag-paging-panel {
+  background-color: #f8f9fa; /* Light background */
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+/* Customize pagination button styles */
+.ag-paging-button {
+  background-color: #007bff; /* Button background */
+  color: #fff; /* Button text color */
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 0 5px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for pagination buttons */
+.ag-paging-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Disable button styles */
+.ag-paging-button[disabled] {
+  background-color: #c0c0c0; /* Gray background for disabled state */
+  cursor: not-allowed;
+}
+
+/* Customize the current page indicator */
+.ag-paging-number-select {
+  font-weight: bold;
+  color: #343a40; /* Dark text for current page */
+}
+
+/* Custom styling for the page size dropdown */
+.ag-page-size-select {
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 14px;
+}
+
+
+.pagination-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination-number, .pagination-text, .pagination-arrow {
+  padding: 1px 7px 4px 8px;
+  font-size: 14px;
+  margin: 0 2px;
+  color: #777;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pagination-number:hover, .pagination-text:hover, .pagination-arrow:hover {
+  color: #0056b3;
+}
+
+.pagination-number.active {
+  color: #0056b3;
+}
+
+.pagination-text.disabled, .pagination-arrow.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  display: none;
+}
